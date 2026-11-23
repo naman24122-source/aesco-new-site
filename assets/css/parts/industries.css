@@ -1,0 +1,16 @@
+.in-head { max-width: 62ch; margin-bottom: 48px; }
+.in-head h2 { margin-bottom: 16px; }
+.in-head .lead { color: var(--mute); }
+.in-grid { list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); }
+.in-i { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 28px 20px 26px;
+  background: var(--white); transition: background .2s; }
+.in-i:hover { background: var(--band-2); }
+.in-ic { color: var(--red-deep); flex: none; }
+.in-i span { font: 600 var(--fs-small)/1.35 var(--f-head); color: var(--ink); }
+@media (max-width: 1000px) { .in-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 480px) {
+  .in-head { margin-bottom: 32px; }
+  .in-i { padding: 20px 14px; gap: 12px; }
+  .in-ic { width: 32px; height: 32px; }
+}
