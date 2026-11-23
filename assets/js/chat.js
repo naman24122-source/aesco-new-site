@@ -5,7 +5,6 @@
   if (!btn || !d.querySelector || !window.matchMedia) return;
   var D, Q, panel, scrim, log, chips, form, input, inLabel, focusTo = null, busy = false, isOpen = false, hideT;
   var state = { mode: 'menu', step: 0, ans: {} };
-  var phoneMq = matchMedia('(max-width: 700px)');
   var motionMq = matchMedia('(prefers-reduced-motion: reduce)');
   function reduced() { return motionMq.matches; }
   var SVG = {
@@ -15,8 +14,8 @@
     call: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
     mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>'
   };
-  function svg(name, size) {
-    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+  function svg(name, size, cls) {
+    return '<svg' + (cls ? ' class="' + cls + '"' : '') + ' width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
       'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + SVG[name] + '</svg>';
   }
   function el(tag, cls, text) {
@@ -27,6 +26,7 @@
   }
   function ready() {
     D = window.AE_CHAT; Q = D.quote;
+    btn.insertAdjacentHTML('beforeend', svg('x', 22, 'aec-dock-x')); // shown while the chat is open
     btn.classList.add('ready');
     btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', function () { if (isOpen) close(true); else open(); });
@@ -82,13 +82,15 @@
   function fit() {
     if (!isOpen) return;
     var dock = d.querySelector('.dock'), vv = window.visualViewport, kb = 0;
+    var was = panel.classList.contains('aec-kb');
     if (dock) panel.style.setProperty('--aec-above', Math.round(window.innerHeight - dock.getBoundingClientRect().top + 8) + 'px');
-    if (phoneMq.matches && vv && vv.scale < 1.01) kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+    if (vv && vv.scale < 1.01) kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
     panel.classList.toggle('aec-kb', kb > 80);
     if (kb > 80) {
       panel.style.setProperty('--aec-kb', Math.round(kb) + 'px');
       panel.style.setProperty('--aec-vh', Math.round(vv.height) + 'px');
     }
+    if (was !== kb > 80) scrollDown(true); // the log just changed height: keep the newest message in view
   }
   function open() {
     if (!panel) build();
@@ -128,12 +130,12 @@
     if (log.scrollTo && !instant && !reduced()) log.scrollTo({ top: top, behavior: 'smooth' });
     else log.scrollTop = top;
   }
-  function fill(text) {
-    return String(text).replace(/\{(\w+)\}/g, function (_, k) { return state.ans[k] || ''; });
+  function fill(text, vars) {
+    return String(text).replace(/\{(\w+)\}/g, function (_, k) { return (vars && vars[k]) || state.ans[k] || ''; });
   }
-  function botSay(t, extraActs) {
+  function botSay(t, extraActs, vars) {
     var m = el('div', 'aec-msg aec-bot');
-    (t.say || []).forEach(function (p) { m.appendChild(el('p', null, fill(p))); });
+    (t.say || []).forEach(function (p) { m.appendChild(el('p', null, fill(p, vars))); });
     if (t.list) {
       var ul = el('ul', 'aec-links');
       t.list.forEach(function (l) {
@@ -232,11 +234,15 @@
       chips.appendChild(b);
     });
   }
-  function route(id) {
+  function route(id, vars) {
     if (id === 'quote' || id.indexOf('quote:') === 0) return startQuote(id.split(':')[1]);
     var t = D.topics[id];
     if (!t) return;
-    reply(function () { botSay(t); setChips(t.chips || []); });
+    reply(function () { botSay(t, null, vars); setChips(t.chips || []); });
+  }
+  function stateIn(joined) {
+    for (var i = 0; i < D.states.length; i++) if (joined.indexOf(' ' + D.states[i][0] + ' ') > -1) return D.states[i];
+    return null;
   }
   function matchText(text) {
     var s = text.toLowerCase().replace(/in[\s-]+house/g, 'inhouse');
@@ -255,6 +261,10 @@
       if (r.to === 'quote') quoteN = n;
     });
     if (quoteN && prod) return 'quote:' + prod;
+    if (best === 'reach') {
+      var st = stateIn(joined);
+      if (st) return { id: st[2] ? 'reach-yes' : 'reach-no', vars: { s: st[1] } };
+    }
     return best;
   }
   function typed() {
@@ -265,6 +275,7 @@
     input.value = '';
     userSay(text);
     var id = matchText(text);
+    if (id && id.id) return route(id.id, id.vars);
     if (id) return route(id);
     reply(function () {
       botSay(D.fallback, [
@@ -300,14 +311,23 @@
     var step = Q.steps[state.step];
     if (!step) return;
     value = String(value).slice(0, 120);
-    if (!value && !step.optional) {
-      botSay({ say: [step.need] });
+    if (!value && (!step.optional || state.other)) {
+      botSay({ say: [(state.other && step.otherNeed) || step.need] });
       input.focus();
       return;
     }
     input.value = '';
     dropOpts();
     userSay(shown || step.skip);
+    if (step.other && value === step.other && !state.other) {
+      state.other = true;
+      reply(function () {
+        botSay({ say: [step.otherAsk] });
+        setChips([{ t: Q.cancel, k: 'quiet', fn: cancelQuote }]);
+      });
+      return;
+    }
+    state.other = false;
     state.ans[step.key] = value;
     state.step++;
     reply(function () { ask(); });

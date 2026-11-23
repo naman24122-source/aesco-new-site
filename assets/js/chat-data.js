@@ -31,6 +31,7 @@ window.AE_CHAT = {
   "menu": "Other topics",
   "specs": "Size tables",
   "eligibility": "Who can apply?",
+  "reach": "States we supply",
   "faq-who": "Who makes AESCO cables?",
   "faq-sectors": "Which industries do you serve?",
   "faq-testing": "Do you conduct in-house testing?",
@@ -155,6 +156,7 @@ window.AE_CHAT = {
    ],
    "chips": [
     "eligibility",
+    "reach",
     "whatsapp",
     "call",
     "menu"
@@ -184,7 +186,7 @@ window.AE_CHAT = {
   },
   "exports": {
    "say": [
-    "Today AESCO supplies the domestic Indian market, and we welcome export enquiries.",
+    "Today AESCO supplies the Indian market, with customers in nine states. We welcome enquiries from buyers abroad.",
     "Send the product, quantity and specifications to export@aesco.co.in."
    ],
    "acts": [
@@ -200,8 +202,57 @@ window.AE_CHAT = {
     }
    ],
    "chips": [
+    "reach",
     "products",
     "quote",
+    "menu"
+   ]
+  },
+  "reach": {
+   "say": [
+    "Today we supply customers in nine states: Rajasthan, Punjab, Maharashtra, Telangana, Karnataka, Madhya Pradesh, Goa, Jammu and Andhra Pradesh.",
+    "Our cables are made in Udaipur, and we are expanding our dealer network across India."
+   ],
+   "acts": [
+    {
+     "t": "See the map",
+     "h": "index.html#reach",
+     "k": "page"
+    }
+   ],
+   "chips": [
+    "dealer",
+    "quote",
+    "menu"
+   ]
+  },
+  "reach-yes": {
+   "say": [
+    "Yes, we supply customers in {s} today.",
+    "For a price, ask us for a quote or call us."
+   ],
+   "chips": [
+    "quote",
+    "call",
+    "reach",
+    "menu"
+   ]
+  },
+  "reach-no": {
+   "say": [
+    "{s} is not one of the nine states we supply today: Rajasthan, Punjab, Maharashtra, Telangana, Karnataka, Madhya Pradesh, Goa, Jammu and Andhra Pradesh.",
+    "We are expanding our dealer network across India. To stock AESCO cables in {s}, apply to become a dealer."
+   ],
+   "acts": [
+    {
+     "t": "Apply to become a dealer",
+     "h": "become-a-partner.html",
+     "k": "page"
+    }
+   ],
+   "chips": [
+    "dealer",
+    "whatsapp",
     "menu"
    ]
   },
@@ -429,6 +480,203 @@ window.AE_CHAT = {
    ]
   }
  },
+ "states": [
+  [
+   "dadra and nagar haveli and daman and diu",
+   "Dadra and Nagar Haveli and Daman and Diu",
+   false
+  ],
+  [
+   "andaman and nicobar islands",
+   "Andaman and Nicobar Islands",
+   false
+  ],
+  [
+   "arunachal pradesh",
+   "Arunachal Pradesh",
+   false
+  ],
+  [
+   "himachal pradesh",
+   "Himachal Pradesh",
+   false
+  ],
+  [
+   "andhra pradesh",
+   "Andhra Pradesh",
+   true
+  ],
+  [
+   "madhya pradesh",
+   "Madhya Pradesh",
+   true
+  ],
+  [
+   "uttar pradesh",
+   "Uttar Pradesh",
+   false
+  ],
+  [
+   "andra pradesh",
+   "Andhra Pradesh",
+   true
+  ],
+  [
+   "chhattisgarh",
+   "Chhattisgarh",
+   false
+  ],
+  [
+   "lakshadweep",
+   "Lakshadweep",
+   false
+  ],
+  [
+   "maharashtra",
+   "Maharashtra",
+   true
+  ],
+  [
+   "uttarakhand",
+   "Uttarakhand",
+   false
+  ],
+  [
+   "west bengal",
+   "West Bengal",
+   false
+  ],
+  [
+   "pondicherry",
+   "Puducherry",
+   false
+  ],
+  [
+   "chandigarh",
+   "Chandigarh",
+   false
+  ],
+  [
+   "puducherry",
+   "Puducherry",
+   false
+  ],
+  [
+   "tamil nadu",
+   "Tamil Nadu",
+   false
+  ],
+  [
+   "jharkhand",
+   "Jharkhand",
+   false
+  ],
+  [
+   "karnataka",
+   "Karnataka",
+   true
+  ],
+  [
+   "meghalaya",
+   "Meghalaya",
+   false
+  ],
+  [
+   "rajasthan",
+   "Rajasthan",
+   true
+  ],
+  [
+   "telangana",
+   "Telangana",
+   true
+  ],
+  [
+   "nagaland",
+   "Nagaland",
+   false
+  ],
+  [
+   "gujarat",
+   "Gujarat",
+   false
+  ],
+  [
+   "haryana",
+   "Haryana",
+   false
+  ],
+  [
+   "manipur",
+   "Manipur",
+   false
+  ],
+  [
+   "mizoram",
+   "Mizoram",
+   false
+  ],
+  [
+   "tripura",
+   "Tripura",
+   false
+  ],
+  [
+   "kerala",
+   "Kerala",
+   false
+  ],
+  [
+   "ladakh",
+   "Ladakh",
+   false
+  ],
+  [
+   "odisha",
+   "Odisha",
+   false
+  ],
+  [
+   "punjab",
+   "Punjab",
+   true
+  ],
+  [
+   "sikkim",
+   "Sikkim",
+   false
+  ],
+  [
+   "orissa",
+   "Odisha",
+   false
+  ],
+  [
+   "assam",
+   "Assam",
+   false
+  ],
+  [
+   "bihar",
+   "Bihar",
+   false
+  ],
+  [
+   "delhi",
+   "Delhi",
+   false
+  ],
+  [
+   "jammu",
+   "Jammu",
+   true
+  ],
+  [
+   "goa",
+   "Goa",
+   true
+  ]
+ ],
  "fallback": {
   "say": [
    "We do not have a ready answer for that here. Our team can answer it on WhatsApp or on a call."
@@ -569,6 +817,56 @@ window.AE_CHAT = {
    ]
   },
   {
+   "to": "reach",
+   "w": 2,
+   "words": [
+    "supply",
+    "supplied",
+    "supplies",
+    "state",
+    "states",
+    "dadra and nagar haveli and daman and diu",
+    "andaman and nicobar islands",
+    "arunachal pradesh",
+    "himachal pradesh",
+    "andhra pradesh",
+    "madhya pradesh",
+    "uttar pradesh",
+    "andra pradesh",
+    "chhattisgarh",
+    "lakshadweep",
+    "maharashtra",
+    "uttarakhand",
+    "west bengal",
+    "pondicherry",
+    "chandigarh",
+    "puducherry",
+    "tamil nadu",
+    "jharkhand",
+    "karnataka",
+    "meghalaya",
+    "rajasthan",
+    "telangana",
+    "nagaland",
+    "gujarat",
+    "haryana",
+    "manipur",
+    "mizoram",
+    "tripura",
+    "kerala",
+    "ladakh",
+    "odisha",
+    "punjab",
+    "sikkim",
+    "orissa",
+    "assam",
+    "bihar",
+    "delhi",
+    "jammu",
+    "goa"
+   ]
+  },
+  {
    "to": "specs",
    "w": 2,
    "words": [
@@ -607,7 +905,9 @@ window.AE_CHAT = {
     "office",
     "location",
     "located",
-    "where"
+    "where",
+    "udaipur",
+    "factory"
    ]
   },
   {
@@ -720,7 +1020,11 @@ window.AE_CHAT = {
      "Control Cables",
      "Power Cables",
      "Something else"
-    ]
+    ],
+    "need": "Please pick a cable, or type its name.",
+    "other": "Something else",
+    "otherAsk": "Which cable is it? Type its name or what it is for.",
+    "otherNeed": "Please type the cable you need."
    },
    {
     "key": "size",

@@ -16,6 +16,9 @@
 @media (min-width: 701px) and (max-height: 760px) {
   .aec { bottom: 20px; right: 88px; height: min(560px, calc(100vh - var(--hdr, 76px) - 36px)); }
 }
+.aec.aec-kb { bottom: calc(var(--aec-kb) + 8px); height: calc(var(--aec-vh) - 16px); min-height: 0; }
+.dock-chat .aec-dock-x, html.aec-open .dock-chat > svg { display: none; }
+html.aec-open .dock-chat > .aec-dock-x { display: block; }
 .aec-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .aec-head { flex: none; display: flex; align-items: center; gap: 12px; padding: 12px 8px 12px 20px;
   background: var(--dark); color: var(--t-light); }
@@ -91,7 +94,6 @@
   .aec { left: 12px; right: 12px; width: auto; min-height: 0;
     height: min(85vh, calc(100vh - var(--aec-above, 182px) - var(--hdr, 64px) - 12px));
     height: min(85svh, calc(100svh - var(--aec-above, 182px) - var(--hdr, 64px) - 12px)); }
-  .aec.aec-kb { bottom: calc(var(--aec-kb) + 8px); height: calc(var(--aec-vh) - 16px); }
   .aec-scrim { position: fixed; z-index: 89; inset: 0; display: block;
     background: rgba(21,19,19,.5); opacity: 0; transition: opacity .2s var(--ease); }
   .aec-scrim.is-in { opacity: 1; }
