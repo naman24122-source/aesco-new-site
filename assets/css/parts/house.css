@@ -109,3 +109,6 @@
 .hs-live:not(.is-final) .hs-wash { opacity: 0; }
 .hs-cap[hidden] { display:none!important; }
 @media(prefers-reduced-motion:reduce){.hs-c,.hs-f{transition:none!important}}
+.hs .hs-tag { display: none; }
+.hs .hs-tick { min-width: 0; }
+.hs .hs-tn { display: none; }
