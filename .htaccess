@@ -1,10 +1,7 @@
-# AESCO preview, for client review only
+# aesco.co.in: Coming soon at the root, the new site under /preview-aesco/
 DirectoryIndex index.html
 Options -Indexes
-ErrorDocument 404 /new-site/404.html
+ErrorDocument 404 /index.html
 <IfModule mod_headers.c>
 Header set X-Robots-Tag "noindex, nofollow"
-<FilesMatch "\.html$">
-Header set Cache-Control "no-cache"
-</FilesMatch>
 </IfModule>
