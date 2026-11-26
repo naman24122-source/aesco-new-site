@@ -115,3 +115,16 @@
 }
 .hm-pt-list li::before { content: none; display: none; }
 .hm-pt-list li { grid-template-columns: minmax(0, 1fr); }
+.hm-dl { background: var(--white); }
+.hm-dl-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.hm-dl-pic { aspect-ratio: 4 / 3; }
+.hm-dl-txt h2 { margin-bottom: 16px; }
+.hm-dl-txt .lead { color: var(--mute); margin-bottom: 24px; }
+.hm-dl-list { margin-bottom: 32px; }
+.hm-dl-list li { color: var(--mute); }
+.hm-dl-list b { color: var(--ink); font-weight: 700; }
+.hm-dl-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.hm-dl-call { display: inline-flex; align-items: center; gap: 10px; font: 700 var(--fs-body)/1 var(--f-head); color: var(--ink); text-decoration: none; }
+.hm-dl-call .ic { color: var(--red-deep); }
+.hm-dl-call:hover span { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 900px) { .hm-dl-in { grid-template-columns: minmax(0, 1fr); } }

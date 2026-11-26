@@ -168,21 +168,20 @@
 }
 .bz-cards-sec { position: relative; z-index: 1; padding: 0 0 80px; background: var(--band); }
 .bz-cards { list-style: none; position: relative; top: -56px; margin-bottom: -56px; display: grid;
-  grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr)); gap: 16px; }
+  grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .bz-card a { display: flex; flex-direction: column; gap: 8px; height: 100%; min-height: 220px; padding: 28px;
   border: 1px solid var(--line); border-radius: var(--r-lg); background: #fff; color: var(--ink); text-decoration: none; transition: border-color .25s, background .25s; }
 .bz-card a:hover { border-color: var(--ink); }
 .bz-card-ic { display: inline-grid; place-items: center; width: 48px; height: 48px; margin-bottom: 14px; border-radius: 50%; background: rgba(227,30,36,.1); color: var(--red-deep); }
-.bz-card-k { font: 700 .74rem/1.2 var(--f-head); color: var(--mute); }
-.bz-card b { font: 800 clamp(1.05rem, 1.5vw, 1.25rem)/1.25 var(--f-head); overflow-wrap: anywhere; }
-.bz-card-go { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 18px; font: 700 .88rem/1 var(--f-head); color: var(--red-deep); }
+.bz-card-k { font: 700 var(--fs-meta)/1.2 var(--f-head); color: var(--mute); }
+.bz-card b { font: 800 var(--fs-lead)/1.25 var(--f-head); overflow-wrap: anywhere; }
+.bz-card-go { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 18px; font: 700 var(--fs-small)/1 var(--f-head); color: var(--red-deep); }
 .bz-card-go .ic { transition: transform .25s var(--ease); }
 .bz-card a:hover .bz-card-go .ic { transform: translateX(4px); }
 .bz-card-main a { border-color: var(--red-deep); background: var(--red-deep); color: #fff; }
 .bz-card-main a:hover { border-color: var(--red-dark); background: var(--red-dark); }
 .bz-card-main .bz-card-ic { background: rgba(255,255,255,.14); color: #fff; }
 .bz-card-main .bz-card-k, .bz-card-main .bz-card-go { color: #fff; }
-.bz-card-main b { font-size: clamp(1.4rem, 2.3vw, 2rem); }
 @media (max-width: 1100px) { .bz-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) {
   .bz-cards { grid-template-columns: minmax(0, 1fr); top: -40px; margin-bottom: -40px; gap: 12px; }
