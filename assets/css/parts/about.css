@@ -135,3 +135,22 @@
 .ab-cf-side h2 { margin-bottom: 16px; max-width: 12ch; }
 .ab-cf-side p:not(.lbl) { color: var(--mute); max-width: 40ch; }
 @media (max-width: 900px) { .ab-cf-in { grid-template-columns: minmax(0, 1fr); } }
+.ab-links-h { margin-bottom: 32px; }
+.ab-links-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ab-link { display: flex; flex-direction: column; gap: 12px; padding: 32px 28px; border: 1px solid var(--line-d); border-radius: var(--r-lg);
+  background: var(--dark-2); color: var(--t-light); text-decoration: none; transition: border-color .2s; }
+.ab-link:hover { border-color: var(--red-soft); }
+.ab-link h3 { color: #fff; }
+.ab-link p { color: var(--t-mute); margin: 0; flex: 1; }
+@media (max-width: 800px) { .ab-links-grid { grid-template-columns: minmax(0, 1fr); } }
+.ab-certs-head { max-width: 62ch; margin-bottom: 40px; }
+.ab-certs-head h2 { margin-bottom: 14px; }
+.ab-certs-head .lead { color: var(--mute); }
+.ab-cert-grid { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ab-cert { display: flex; flex-direction: column; gap: 12px; padding: 28px 24px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--white); }
+.ab-cert-logo { display: flex; align-items: center; height: 84px; }
+.ab-cert-logo img { max-height: 84px; max-width: 150px; width: auto; height: auto; object-fit: contain; }
+.ab-cert p { color: var(--mute); margin: 0; flex: 1; }
+.ab-cert-bt { align-self: flex-start; margin-top: 6px; }
+@media (max-width: 900px) { .ab-cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ab-cert-grid { grid-template-columns: minmax(0, 1fr); } }

@@ -110,8 +110,6 @@
   .pd-help { grid-template-columns: minmax(0, 1fr); }
   .pd-help-link { font-size: .98rem; overflow-wrap: anywhere; }
 }
-.pd-faq { max-width: 880px; }
-.pd-faq .shead { margin-bottom: 36px; }
 .pd-rel-grid { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
 .pd-rel-grid li { display: flex; }
 .pd-rel { display: flex; flex-direction: column; width: 100%; background: var(--dark-2); border: 1px solid var(--line-d);
@@ -131,3 +129,10 @@
   .pd-rel-b .more { margin-top: 0; }
 }
 .pd-tbl2 { margin-top: 32px; }
+.pd-spec .acc-q { font: 700 var(--fs-h3)/1.3 var(--f-head); padding: 26px 0; }
+.pd-kv { width: 100%; border-collapse: collapse; }
+.pd-kv th, .pd-kv td { text-align: left; padding: 18px 16px 18px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.pd-kv thead th { font: 700 var(--fs-meta)/1.3 var(--f-head); color: var(--red-deep); padding-top: 4px; }
+.pd-kv tbody th { width: 44%; font: 600 var(--fs-body)/1.45 var(--f-head); color: var(--ink); }
+.pd-kv td { color: var(--ink); }
+@media (max-width: 600px) { .pd-kv tbody th { width: 46%; font-size: var(--fs-small); } .pd-kv td { font-size: var(--fs-small); } }

@@ -180,6 +180,11 @@ body.over-hero { padding-top: 0; }
 .dark .acc-a > div { color: var(--t-mute); }
 .js .acc-a { height: 0; transition: height .35s var(--ease); }
 .js .acc-item.open .acc-a { height: auto; }
+.faq-split { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.faq-side h2 { margin-bottom: 16px; }
+.faq-side p { color: var(--mute); max-width: 40ch; }
+.faq-side a { color: var(--ink); font-weight: 600; }
+@media (max-width: 900px) { .faq-split { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
 .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: #fff; }
 .tablewrap:focus-visible { outline-offset: 2px; }
 .spec { width: 100%; border-collapse: collapse; font-size: var(--fs-small); min-width: 640px; }
@@ -247,8 +252,9 @@ body.over-hero { padding-top: 0; }
 .dock-call:hover { background: var(--red-dark); }
 .dock-b:hover { transform: translateY(-2px); }
 @media (max-width: 700px) {
-  .dock { right: 14px; bottom: 14px; gap: 8px; }
-  .dock-b { width: 48px; height: 48px; }
+  .dock { right: 10px; bottom: 12px; gap: 8px; }
+  .dock-b { width: 44px; height: 44px; }
+  .dock-b .ic { width: 19px; height: 19px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }

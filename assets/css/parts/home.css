@@ -113,3 +113,5 @@
   .hm-badge, .hm-note { position: static; margin-top: 12px; max-width: none; }
   .hm-pt .bts .bt { width: 100%; justify-content: center; }
 }
+.hm-pt-list li::before { content: none; display: none; }
+.hm-pt-list li { grid-template-columns: minmax(0, 1fr); }

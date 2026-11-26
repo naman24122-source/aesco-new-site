@@ -112,3 +112,56 @@
 .hs .hs-tag { display: none; }
 .hs .hs-tick { min-width: 0; }
 .hs .hs-tn { display: none; }
+.hs-art {
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(320px, 46vw, 610px);
+  display: grid;
+  place-items: center;
+  background: #171414 url('../../img/gen/home-house-application.jpg') center / cover no-repeat;
+}
+.hs-art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(20,17,16,.12), rgba(20,17,16,.42) 63%, rgba(20,17,16,.8));
+}
+.hs-svg {
+  position: relative;
+  width: min(94%, 1080px);
+  opacity: .72;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.36));
+}
+.hs-sky { fill: rgba(23,20,20,.12); }
+.hs-in { fill: rgba(28,24,23,.16); }
+.hs-wash { opacity: .4; }
+.hs-s1 { stroke: rgba(255,242,233,.72); }
+.hs-s2 { stroke: rgba(236,220,209,.54); }
+.hs-s3 { stroke: rgba(221,197,184,.32); }
+.hs-slab { stroke: rgba(255,242,233,.62); }
+.hs-box, .hs-motor { fill: rgba(27,23,22,.18); stroke: rgba(255,242,233,.62); }
+.hs-off { stroke: rgba(255,242,233,.62); }
+.hs-rod { stroke: rgba(255,242,233,.68); }
+.hs-beds path { stroke: rgba(255,231,218,.35); }
+.hs-note { max-width: 72ch; }
+.hs-live .hs-stage { height: auto; display: block; padding-top: 0; }
+.hs-live .hs-grid { display: grid; max-width: var(--max); padding: 0 var(--gut); grid-template-columns: none; }
+.hs-live .hs-art { padding: clamp(10px, 1.6vw, 22px); }
+.hs-live .hs-svg { max-height: none; }
+.hs-live .hs-caps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.hs-live .hs-cap { grid-area: auto; padding: 24px; }
+.hs-live .hs-end { position: static; inset: auto; margin-top: 16px; flex-direction: row; flex-wrap: wrap; padding: 24px 28px; }
+.hs-live .hs-hint, .hs-live .hs-ticks { display: none; }
+.hs-live .hs-fit .hs-on { opacity: 1; }
+.hs-live .hs-c .hs-f { opacity: .8; }
+.hs-live .hs-c.is-dim { opacity: 1; }
+@media (max-width: 1000px) {
+  .hs-live .hs-caps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .hs-art { min-height: 280px; background-position: 37% center; }
+  .hs-svg { width: 128%; max-width: none; opacity: .64; }
+  .hs-live .hs-caps { grid-template-columns: minmax(0, 1fr); }
+  .hs-live .hs-end { padding: 22px 20px; }
+}
